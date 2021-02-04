@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import {Canvas} from 'react-three-fiber'
+import {Astrobee} from './Astrobee'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <Canvas>
+        <ambientLight/>
+        <pointLight position={[10, 10, 10]}/>
+        <Astrobee/>
+    </Canvas>,
+    document.getElementById('root')
 );
