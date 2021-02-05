@@ -1,6 +1,7 @@
 import React, {Suspense, useRef, useState} from 'react'
 import {useLoader, useFrame} from 'react-three-fiber'
 import {ColladaLoader} from 'three/examples/jsm/loaders/ColladaLoader'
+import {Matrix4} from 'three'
 
 
 export const Astrobee = () => {
@@ -9,13 +10,16 @@ export const Astrobee = () => {
             fallback={<Box position={[-1.2, 0, 0]}/>}>
             <DaeFromFile file={'/body.dae'}/>
             <DaeFromFile file={'/pmc.dae'}/>
+            <DaeFromFile file={'/pmc_2.dae'} flipZ/>
             <DaeFromFile file={'/pmc_bumper.dae'}/>
+            <DaeFromFile file={'/pmc_bumper_2.dae'} flipZ/>
             <DaeFromFile file={'/pmc_skin_.dae'}/>
+            <DaeFromFile file={'/pmc_skin_2.dae'} flipZ/>
         </Suspense>
     )
 }
 
-export const DaeFromFile = ({file}) => {
+export const DaeFromFile = ({file, flipZ}) => {
 
     const mesh = useRef()
 
@@ -24,6 +28,8 @@ export const DaeFromFile = ({file}) => {
     })
 
     const {scene} = useLoader(ColladaLoader, file)
+
+    if (flipZ) scene.applyMatrix4(new Matrix4().makeScale(1, 1, -1));
 
     return (
         <primitive
