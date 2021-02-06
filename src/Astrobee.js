@@ -4,27 +4,27 @@ import {ColladaLoader} from 'three/examples/jsm/loaders/ColladaLoader'
 import {Matrix4} from 'three'
 
 
-export const Astrobee = () => {
+export const Astrobee = ({yRotation}) => {
     return (
         <Suspense
-            fallback={<Box position={[-1.2, 0, 0]}/>}>
-            <DaeFromFile file={'/body.dae'}/>
-            <DaeFromFile file={'/pmc.dae'}/>
-            <DaeFromFile file={'/pmc_2.dae'} flipZ/>
-            <DaeFromFile file={'/pmc_bumper.dae'}/>
-            <DaeFromFile file={'/pmc_bumper_2.dae'} flipZ/>
-            <DaeFromFile file={'/pmc_skin_.dae'}/>
-            <DaeFromFile file={'/pmc_skin_2.dae'} flipZ/>
+            fallback={<mesh/>}>
+            <DaeFromFile file={'/body.dae'} yRotation={yRotation}/>
+            <DaeFromFile file={'/pmc.dae'} yRotation={yRotation}/>
+            <DaeFromFile file={'/pmc_2.dae'} flipZ yRotation={yRotation}/>
+            <DaeFromFile file={'/pmc_bumper.dae'} yRotation={yRotation}/>
+            <DaeFromFile file={'/pmc_bumper_2.dae'} flipZ yRotation={yRotation}/>
+            <DaeFromFile file={'/pmc_skin_.dae'} yRotation={yRotation}/>
+            <DaeFromFile file={'/pmc_skin_2.dae'} flipZ yRotation={yRotation}/>
         </Suspense>
     )
 }
 
-export const DaeFromFile = ({file, flipZ}) => {
+export const DaeFromFile = ({file, flipZ, yRotation}) => {
 
     const mesh = useRef()
 
     useFrame(() => {
-        if (mesh.current) mesh.current.rotation.x = mesh.current.rotation.y += 0.01
+        if (mesh.current) mesh.current.rotation.y += yRotation
     })
 
     const {scene} = useLoader(ColladaLoader, file)
@@ -35,32 +35,7 @@ export const DaeFromFile = ({file, flipZ}) => {
         <primitive
             ref={mesh}
             object={scene}
-            scale={[15, 15, 15]}
+            scale={[10, 10, 10]}
         />
     )
 }
-
-export const Box = (props) => {
-    const mesh = useRef()
-
-    const [hovered, setHover] = useState(false)
-    const [active, setActive] = useState(false)
-
-    useFrame(() => {
-        mesh.current.rotation.x = mesh.current.rotation.y += 0.01
-    })
-
-    return (
-        <mesh
-            {...props}
-            ref={mesh}
-            scale={active ? [1.5, 1.5, 1.5] : [1, 1, 1]}
-            onClick={(event) => setActive(!active)}
-            onPointerOver={(event) => setHover(true)}
-            onPointerOut={(event) => setHover(false)}>
-            <boxBufferGeometry args={[1, 1, 1]}/>
-            <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'}/>
-        </mesh>
-    )
-}
-
