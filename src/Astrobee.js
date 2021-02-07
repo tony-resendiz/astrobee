@@ -19,7 +19,7 @@ export const MODELS_TO_FLIP = [
     "/pmc_skin_2.dae"
 ]
 
-export const Astrobee = ({yRotation}) => {
+export const Astrobee = ({yRotationRate}) => {
 
     return (
         <Suspense
@@ -29,7 +29,7 @@ export const Astrobee = ({yRotation}) => {
                     return <DaeFromFile
                         key={file}
                         file={file}
-                        yRotation={yRotation}
+                        yRotationRate={yRotationRate}
                     />
                 })
             }
@@ -37,14 +37,14 @@ export const Astrobee = ({yRotation}) => {
     )
 }
 
-export const DaeFromFile = ({file, yRotation}) => {
+export const DaeFromFile = ({file, yRotationRate}) => {
 
     const [hasFlipped, setHasFlipped] = useState([])
 
     const mesh = useRef()
 
     useFrame(() => {
-        if (mesh.current) mesh.current.rotation.y += yRotation
+        if (mesh.current) mesh.current.rotation.y += yRotationRate
     })
 
     const {scene} = useLoader(ColladaLoader, file)

@@ -18,7 +18,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --roots '<rootDir>/test' --testMatch '**/?(*.)+(spec|test).[jt]s?(x)'",
     "eject": "react-scripts eject"
   },
   "jest": {

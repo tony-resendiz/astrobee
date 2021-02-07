@@ -1,20 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
-export const RotationRadioGroup = ({setYRotation}) => {
+export const RotationRadioGroup = ({setYRotationRate}) => {
 
-    const [value, setValue] = React.useState("clockwise")
+    const [value, setValue] = useState("clockwise")
 
     const handleChange = (event) => {
         setValue(event.target.value)
 
         if (event.target.value === "clockwise") {
-            setYRotation(0.01);
-        } else setYRotation(-0.01);
+            setYRotationRate(0.01);
+        } else {
+            setYRotationRate(-0.01);
+        }
     };
 
     return (

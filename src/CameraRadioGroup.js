@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -7,7 +7,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 
 export const CameraRadioGroup = ({setCameraPosition}) => {
 
-    const [value, setValue] = React.useState("side")
+    const [value, setValue] = useState("side")
 
     const handleChange = (event) => {
         setValue(event.target.value)
