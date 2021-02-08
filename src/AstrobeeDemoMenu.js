@@ -12,14 +12,12 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
         minWidth: "240px",
-        height: "100%"
+        height: "100vh"
     },
     text: {
         color: "black",
-        fontFamily: "Courier New"
-    },
-    appBar: {
-        background: "white"
+        fontFamily: "Courier New",
+        margin: theme.spacing(1)
     }
 }));
 
@@ -40,11 +38,9 @@ export const AstrobeeDemoMenu = ({setYRotationRate, setCameraPosition}) => {
                     <ListItem>
                         <RotationSelect setYRotationRate={setYRotationRate}/>
                     </ListItem>
-                    <Divider/>
                     <ListItem>
                         <ViewSelect setCameraPosition={setCameraPosition}/>
                     </ListItem>
-                    <Divider/>
                 </List>
             </Paper>
         </div>
