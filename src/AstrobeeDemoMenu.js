@@ -1,14 +1,15 @@
-import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Paper from "@material-ui/core/Paper";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import Divider from "@material-ui/core/Divider";
-import {RotationSelect} from "./RotationSelect";
-import {ViewSelect} from "./ViewSelect";
+import React from 'react'
+import {makeStyles} from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+import Paper from "@material-ui/core/Paper"
+import List from "@material-ui/core/List"
+import ListItem from "@material-ui/core/ListItem"
+import Divider from "@material-ui/core/Divider"
+import {RotationSelect} from "./RotationSelect"
+import {ViewSelect} from "./ViewSelect"
+import {SkinSelect} from "./SkinSelect"
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
         minWidth: "240px",
@@ -19,11 +20,11 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: "Courier New",
         margin: theme.spacing(1)
     }
-}));
+}))
 
-export const AstrobeeDemoMenu = ({setYRotationRate, setCameraPosition}) => {
+export const AstrobeeDemoMenu = ({setYRotationRate, setCameraPosition, setSkin}) => {
 
-    const classes = useStyles();
+    const classes = useStyles()
 
     return (
         <div style={{"display": "inline-grid"}}>
@@ -41,8 +42,11 @@ export const AstrobeeDemoMenu = ({setYRotationRate, setCameraPosition}) => {
                     <ListItem>
                         <ViewSelect setCameraPosition={setCameraPosition}/>
                     </ListItem>
+                    <ListItem>
+                        <SkinSelect setSkin={setSkin}/>
+                    </ListItem>
                 </List>
             </Paper>
         </div>
-    );
+    )
 }

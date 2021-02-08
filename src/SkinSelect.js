@@ -16,30 +16,44 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-export const RotationSelect = ({setYRotationRate}) => {
+export const SkinSelect = ({setSkin}) => {
 
     const classes = useStyles()
 
-    const [selectValue, setSelectValue] = useState("clockwise")
+    const [selectValue, setSelectValue] = useState("default")
 
     const handleChange = event => {
 
         setSelectValue(event.target.value)
 
-        if (event.target.value === "clockwise") {
-            setYRotationRate(0.01)
-        } else {
-            setYRotationRate(-0.01)
+        switch (event.target.value) {
+            case "honey": {
+                setSkin("honey")
+                break
+            }
+            case "queen": {
+                setSkin("queen")
+                break
+            }
+            case "bumble": {
+                setSkin("bumble")
+                break
+            }
+            default: {
+                setSkin("default")
+            }
         }
     }
 
     return (
         <div>
             <FormControl className={classes.formControl}>
-                <InputLabel id="rotation-label">Rotation</InputLabel>
+                <InputLabel id="skin-label">Skin</InputLabel>
                 <Select value={selectValue} onChange={handleChange}>
-                    <MenuItem value={"clockwise"}>Clockwise</MenuItem>
-                    <MenuItem value={"counter clockwise"}>Counter Clockwise</MenuItem>
+                    <MenuItem value={"default"}>Default</MenuItem>
+                    <MenuItem value={"honey"}>Honey</MenuItem>
+                    <MenuItem value={"queen"}>Queen</MenuItem>
+                    <MenuItem value={"bumble"}>Bumble</MenuItem>
                 </Select>
             </FormControl>
         </div>
