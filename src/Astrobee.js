@@ -1,7 +1,7 @@
-import React, {Suspense, useRef, useState} from 'react'
-import {useLoader, useFrame} from 'react-three-fiber'
-import {ColladaLoader} from 'three/examples/jsm/loaders/ColladaLoader'
-import {Matrix4} from 'three'
+import React, {Suspense, useRef, useState} from "react"
+import {useLoader, useFrame} from "react-three-fiber"
+import {ColladaLoader} from "three/examples/jsm/loaders/ColladaLoader"
+import {Matrix4} from "three"
 
 export const ALL_MODEL_FILES = [
     "/body.dae",

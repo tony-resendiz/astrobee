@@ -1,10 +1,16 @@
 import {makeStyles} from '@material-ui/core/styles'
 
 export const useStyles = makeStyles(theme => ({
+    root: {
+        display: "inline-flex",
+        height: "100vh",
+        width: "100vh"
+    },
     menu: {
         flexGrow: 1,
-        minWidth: "240px",
-        height: "100vh"
+        minWidth: "280px",
+        height: "100vh",
+        display: "inline-grid"
     },
     menuHeader: {
         color: "black",
@@ -13,10 +19,11 @@ export const useStyles = makeStyles(theme => ({
     },
     formControl: {
         margin: theme.spacing(1),
-        minWidth: 120,
+        minWidth: 120
     },
     text: {
         color: "black",
         fontFamily: "Courier New",
+        fontSize: "larger"
     }
 }))

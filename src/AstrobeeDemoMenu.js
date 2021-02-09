@@ -1,5 +1,5 @@
-import React from 'react'
-import Typography from '@material-ui/core/Typography'
+import React from "react"
+import Typography from "@material-ui/core/Typography"
 import Paper from "@material-ui/core/Paper"
 import List from "@material-ui/core/List"
 import ListItem from "@material-ui/core/ListItem"
@@ -15,26 +15,24 @@ export const AstrobeeDemoMenu = ({setYRotationRate, setCameraPosition, setSkin})
     const classes = useStyles()
 
     return (
-        <div style={{"display": "inline-grid"}}>
-            <Paper className={classes.menu}>
-                <List>
-                    <ListItem>
-                        <Typography variant="h6" className={classes.menuHeader}>
-                            Astrobee Demo
-                        </Typography>
-                    </ListItem>
-                    <Divider/>
-                    <ListItem>
-                        <RotationSelect id="rotation-select" setYRotationRate={setYRotationRate}/>
-                    </ListItem>
-                    <ListItem>
-                        <ViewSelect id="camera-select" setCameraPosition={setCameraPosition}/>
-                    </ListItem>
-                    <ListItem>
-                        <SkinSelect id="skin-select" setSkin={setSkin}/>
-                    </ListItem>
-                </List>
-            </Paper>
-        </div>
+        <Paper className={classes.menu}>
+            <List>
+                <ListItem>
+                    <Typography variant="h6" className={classes.menuHeader}>
+                        Astrobee Demo
+                    </Typography>
+                </ListItem>
+                <Divider/>
+                <ListItem>
+                    <RotationSelect id="rotation-select" setYRotationRate={setYRotationRate}/>
+                </ListItem>
+                <ListItem>
+                    <ViewSelect id="camera-select" setCameraPosition={setCameraPosition}/>
+                </ListItem>
+                <ListItem>
+                    <SkinSelect id="skin-select" setSkin={setSkin}/>
+                </ListItem>
+            </List>
+        </Paper>
     )
 }
