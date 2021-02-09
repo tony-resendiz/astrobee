@@ -37,13 +37,13 @@ export const AstrobeeDemoMenu = ({setYRotationRate, setCameraPosition, setSkin})
                     </ListItem>
                     <Divider/>
                     <ListItem>
-                        <RotationSelect setYRotationRate={setYRotationRate}/>
+                        <RotationSelect id="rotation-select" setYRotationRate={setYRotationRate}/>
                     </ListItem>
                     <ListItem>
-                        <ViewSelect setCameraPosition={setCameraPosition}/>
+                        <ViewSelect id="camera-select" setCameraPosition={setCameraPosition}/>
                     </ListItem>
                     <ListItem>
-                        <SkinSelect setSkin={setSkin}/>
+                        <SkinSelect id="skin-select" setSkin={setSkin}/>
                     </ListItem>
                 </List>
             </Paper>
