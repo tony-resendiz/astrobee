@@ -6,5 +6,4 @@ Demo Instructions
 - `npm run test` to run tests
 
 TODO
-- figure out if it can render a model twice from the same file
 - better testing for Astrobee and AstrobeeDemoMenu
