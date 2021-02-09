@@ -1,21 +1,10 @@
 import React, {useState} from 'react'
-import {makeStyles} from '@material-ui/core/styles'
+import {useStyles} from "./styles"
 import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
-import Typography from "@material-ui/core/Typography";
-
-const useStyles = makeStyles(theme => ({
-    formControl: {
-        margin: theme.spacing(1),
-        minWidth: 120,
-    },
-    text: {
-        color: "black",
-        fontFamily: "Courier New",
-    }
-}))
+import Typography from "@material-ui/core/Typography"
 
 export const RotationSelect = ({setYRotationRate}) => {
 
@@ -37,18 +26,21 @@ export const RotationSelect = ({setYRotationRate}) => {
     return (
         <div>
             <FormControl className={classes.formControl}>
-                <InputLabel id="rotation-label">
+                <InputLabel>
                     <Typography className={classes.text}>
                         Rotation
                     </Typography>
                 </InputLabel>
-                <Select inputProps={{"data-testid": "rotation-select"}} value={selectValue} onChange={handleChange}>
-                    <MenuItem inputProps={{"data-testid": "clockwise"}} value={"clockwise"}>
+                <Select
+                    inputProps={{"data-testid": "rotation-select"}}
+                    value={selectValue}
+                    onChange={handleChange}>
+                    <MenuItem value={"clockwise"}>
                         <Typography className={classes.text}>
                             Clockwise
                         </Typography>
                     </MenuItem>
-                    <MenuItem inputProps={{"data-testid": "counter-clockwise"}} value={"counter clockwise"}>
+                    <MenuItem value={"counter clockwise"}>
                         <Typography className={classes.text}>
                             Counter Clockwise
                         </Typography>

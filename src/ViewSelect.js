@@ -1,20 +1,10 @@
 import React, {useState} from 'react'
-import {makeStyles} from '@material-ui/core/styles'
+import {useStyles} from "./styles"
 import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
-
-const useStyles = makeStyles((theme) => ({
-    formControl: {
-        margin: theme.spacing(1),
-        minWidth: 120,
-    },
-    text: {
-        color: "black",
-        fontFamily: "Courier New",
-    }
-}))
+import Typography from "@material-ui/core/Typography";
 
 export const ViewSelect = ({setCameraPosition}) => {
 
@@ -36,10 +26,25 @@ export const ViewSelect = ({setCameraPosition}) => {
     return (
         <div>
             <FormControl className={classes.formControl}>
-                <InputLabel id="view-label">View</InputLabel>
-                <Select value={selectValue} onChange={handleChange}>
-                    <MenuItem value={"side"}>Side</MenuItem>
-                    <MenuItem value={"top-down"}>Top-Down</MenuItem>
+                <InputLabel>
+                    <Typography className={classes.text}>
+                        View
+                    </Typography>
+                </InputLabel>
+                <Select
+                    inputProps={{"data-testid": "view-select"}}
+                    value={selectValue}
+                    onChange={handleChange}>
+                    <MenuItem value={"side"}>
+                        <Typography className={classes.text}>
+                            Side
+                        </Typography>
+                    </MenuItem>
+                    <MenuItem value={"top-down"}>
+                        <Typography className={classes.text}>
+                            Top-Down
+                        </Typography>
+                    </MenuItem>
                 </Select>
             </FormControl>
         </div>
