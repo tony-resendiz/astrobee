@@ -1,4 +1,4 @@
-import React, {Suspense, useRef, useState, useMemo} from "react"
+import React, {Suspense, useRef, useMemo} from "react"
 import {useLoader, useFrame} from "react-three-fiber"
 import {ColladaLoader} from "three/examples/jsm/loaders/ColladaLoader"
 import {Matrix4} from "three"
@@ -26,6 +26,8 @@ export const SKIN_FILES_BY_KEY = {
 
 export const ALL_SKIN_FILES = Object.values(SKIN_FILES_BY_KEY).flatMap(file => file)
 
+export const scale = [15,15,15]
+
 export const Astrobee = ({yRotationRate, skin}) => {
 
     return (
@@ -37,7 +39,6 @@ export const Astrobee = ({yRotationRate, skin}) => {
                         key={file}
                         file={file}
                         yRotationRate={yRotationRate}
-                        skin={skin}
                     />
                 })
             }
@@ -67,7 +68,7 @@ export const DaeFromFile = ({file, yRotationRate}) => {
         <primitive
             ref={mesh}
             object={scene}
-            scale={[10, 10, 10]}
+            scale={scale}
         />
     )
 }
@@ -99,13 +100,13 @@ export const MirroredDaeFromFile = ({file, yRotationRate, skin}) => {
             <primitive
                 ref={mesh1}
                 object={scene}
-                scale={[10, 10, 10]}
+                scale={scale}
                 visible={shouldShowModel}
             />
             <primitive
                 ref={mesh2}
                 object={copiedScene}
-                scale={[10, 10, 10]}
+                scale={scale}
                 visible={shouldShowModel}
             />
         </group>

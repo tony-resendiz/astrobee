@@ -9,6 +9,7 @@ export const useStyles = makeStyles(theme => ({
     menu: {
         flexGrow: 1,
         minWidth: "280px",
+        minHeight: "350px",
         height: "100vh",
         display: "inline-grid"
     },
