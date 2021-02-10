@@ -3,23 +3,19 @@ import {useLoader, useFrame} from "react-three-fiber"
 import {ColladaLoader} from "three/examples/jsm/loaders/ColladaLoader"
 import {Matrix4} from "three"
 
-export const mirroredModels = [
-    "https://raw.githubusercontent.com/nasa/astrobee_media/master/astrobee_freeflyer/meshes/pmc.dae",
-    "https://raw.githubusercontent.com/nasa/astrobee_media/master/astrobee_freeflyer/meshes/pmc_bumper.dae",
-    "https://raw.githubusercontent.com/nasa/astrobee_media/master/astrobee_freeflyer/meshes/pmc_skin_.dae",
-    "https://raw.githubusercontent.com/nasa/astrobee_media/master/astrobee_freeflyer/meshes/pmc_skin_honey.dae",
-    "https://raw.githubusercontent.com/nasa/astrobee_media/master/astrobee_freeflyer/meshes/pmc_skin_bumble.dae",
-    "https://raw.githubusercontent.com/nasa/astrobee_media/master/astrobee_freeflyer/meshes/pmc_skin_queen.dae",
-]
-
 export const skinFilesByKey = {
-    default: ["https://raw.githubusercontent.com/nasa/astrobee_media/master/astrobee_freeflyer/meshes/pmc_skin_.dae"],
-    honey: ["https://raw.githubusercontent.com/nasa/astrobee_media/master/astrobee_freeflyer/meshes/pmc_skin_honey.dae"],
-    bumble: ["https://raw.githubusercontent.com/nasa/astrobee_media/master/astrobee_freeflyer/meshes/pmc_skin_bumble.dae"],
-    queen: ["https://raw.githubusercontent.com/nasa/astrobee_media/master/astrobee_freeflyer/meshes/pmc_skin_queen.dae"]
+    default: "https://raw.githubusercontent.com/nasa/astrobee_media/master/astrobee_freeflyer/meshes/pmc_skin_.dae",
+    honey: "https://raw.githubusercontent.com/nasa/astrobee_media/master/astrobee_freeflyer/meshes/pmc_skin_honey.dae",
+    bumble: "https://raw.githubusercontent.com/nasa/astrobee_media/master/astrobee_freeflyer/meshes/pmc_skin_bumble.dae",
+    queen: "https://raw.githubusercontent.com/nasa/astrobee_media/master/astrobee_freeflyer/meshes/pmc_skin_queen.dae"
 }
 
 export const allSkinFiles = Object.values(skinFilesByKey).flatMap(file => file)
+
+export const mirroredModels = [
+    "https://raw.githubusercontent.com/nasa/astrobee_media/master/astrobee_freeflyer/meshes/pmc.dae",
+    "https://raw.githubusercontent.com/nasa/astrobee_media/master/astrobee_freeflyer/meshes/pmc_bumper.dae",
+].concat(allSkinFiles)
 
 export const modelScale = [15, 15, 15]
 
@@ -78,11 +74,13 @@ export const MirroredDaeFromFile = ({file, yRotationRate, skin}) => {
         return clone
     }, [scene])
 
+    // i wanted to make this a skin abstraction but didn't have time
+    // maybe do something like Skin -> MirroredDae -> Dae
     let shouldShowModel
     if (!allSkinFiles.includes(file)) {
         shouldShowModel = true
     } else {
-        shouldShowModel = skinFilesByKey[skin].includes(file)
+        shouldShowModel = skinFilesByKey[skin] == file
     }
 
     return (

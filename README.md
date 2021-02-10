@@ -6,4 +6,5 @@ Demo Instructions
 3. `npm run test` to run tests
 
 Bugs
-- Sometimes there's a bug where the models render slightly out of place.  Reloading the page usually puts them back in the correct position.
+- While running `npm run start` and making edits to the code, sometimes I'd see a bug where the page refreshes and models render out of place or rotate in incorrect directions.
+  Sometimes this also happens on the initial `npm run start`.  I'm not sure what the cause is, but reloading the page usually puts things back in order.
