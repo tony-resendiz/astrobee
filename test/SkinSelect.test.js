@@ -14,12 +14,13 @@ test("should set the proper skins", () => {
     // given
     const setSkin = jest.fn()
     const {getByTestId} = render(<SkinSelect setSkin={setSkin}/>)
+    const skinSelect = getByTestId("skin-select")
 
     // when
-    fireEvent.change(getByTestId("skin-select"), {target: {value: "honey"}})
-    fireEvent.change(getByTestId("skin-select"), {target: {value: "bumble"}})
-    fireEvent.change(getByTestId("skin-select"), {target: {value: "queen"}})
-    fireEvent.change(getByTestId("skin-select"), {target: {value: "default"}})
+    fireEvent.change(skinSelect, {target: {value: "honey"}})
+    fireEvent.change(skinSelect, {target: {value: "bumble"}})
+    fireEvent.change(skinSelect, {target: {value: "queen"}})
+    fireEvent.change(skinSelect, {target: {value: "default"}})
 
     // then
     expect(setSkin).toHaveBeenCalledWith("honey")

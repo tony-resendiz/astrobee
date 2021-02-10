@@ -14,10 +14,11 @@ test("should set the proper view", () => {
     // given
     const setCameraPosition = jest.fn()
     const {getByTestId} = render(<ViewSelect setCameraPosition={setCameraPosition}/>)
+    const viewSelect = getByTestId("view-select")
 
     // when
-    fireEvent.change(getByTestId("view-select"), {target: {value: "top-down"}})
-    fireEvent.change(getByTestId("view-select"), {target: {value: "side"}})
+    fireEvent.change(viewSelect, {target: {value: "top-down"}})
+    fireEvent.change(viewSelect, {target: {value: "side"}})
 
     // then
     expect(setCameraPosition).toHaveBeenCalledWith({x: 0, y: 10, z: 0})

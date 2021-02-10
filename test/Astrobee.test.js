@@ -1,7 +1,7 @@
-import {render, screen} from "@testing-library/react"
+import {render} from "@testing-library/react"
 import {Astrobee} from "../src/Astrobee"
 import {Canvas} from "react-three-fiber"
-import {RESIZE_POLYFILL} from "./TestUtils"
+import {resizePolyfill} from "./TestUtils"
 
 test("Astrobee should render without exploding", () => {
     // given, when, then
@@ -9,5 +9,5 @@ test("Astrobee should render without exploding", () => {
 })
 
 export const renderWithCanvasAndResize = component => {
-    return render(<Canvas resize={RESIZE_POLYFILL}>{component}</Canvas>)
+    return render(<Canvas resize={resizePolyfill}>{component}</Canvas>)
 }
