@@ -3,15 +3,14 @@ import {makeStyles} from '@material-ui/core/styles'
 export const useStyles = makeStyles(theme => ({
     root: {
         display: "inline-flex",
-        height: "100vh",
-        width: "100vh"
+        height: "100%",
+        width: "100%",
+        position: "fixed"
     },
     menu: {
-        flexGrow: 1,
         minWidth: "280px",
         minHeight: "350px",
         height: "100vh",
-        display: "inline-grid"
     },
     menuHeader: {
         color: "black",
